@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Button from "./components/Button";
+// import Button from "./components/Button";
 import Header from "./components/Header";
 import Form from "./components/Form";
 
@@ -60,7 +60,7 @@ function App() {
         }, 3000);
       })
       .catch((err) => console.log(err));
-  }, [users]);
+  }, []);
 
   useEffect(() => {
     console.log("useEffect İçi Count");
@@ -76,7 +76,7 @@ function App() {
   }
   return (
     <div>
-      <Button type="primary" buttonText="Button 1" tkla={() => alert("")} />
+      {/* <Button type="primary" buttonText="Button 1" tkla={() => alert("")} />
       <Button
         type="secondary"
         buttonText="Button 2"
@@ -91,14 +91,15 @@ function App() {
         type="success"
         buttonText="Button 4"
         tkla={() => document.write("Ben 4 Butonuyum ?")}
-      />
+      /> */}
+      <Form setUsername={setUsername} />
 
       <Header username={username} />
       {users.map(
         (
           user //{return }   yazılmalı....    ( )seklınde yazılırsa return yapar}
         ) => (
-          <div>
+          <div key={user.id}>
             <h1>{user.name}</h1>
             <p>{user.username}</p>
             <h1>{count}</h1>
@@ -106,10 +107,10 @@ function App() {
             <button onClick={() => setSomeState(!someState)}>
               Change SomeState
             </button>
+            <h1>{someState && "SomeState True"}</h1>
           </div>
         )
       )}
-      <Form setUsername={setUsername} />
     </div>
   );
 }
